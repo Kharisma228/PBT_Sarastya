@@ -1,0 +1,110 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  background-color: #ffffff;
+  color: #333;
+  height: 70px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.header-logo-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0a2e63;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background-color: #e9f1ff;
+  color: #0a2e63;
+}
+
+.settings-container {
+  position: relative;
+}
+
+.settings-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.settings-dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  width: 160px;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.logout-button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #f0f0f0;
+}
+
+.logout-button svg {
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .main-nav ul {
+    display: none;
+  }
+}
