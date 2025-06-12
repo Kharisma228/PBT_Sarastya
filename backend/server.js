@@ -117,6 +117,35 @@ app.put('/api/profile/:id', async (req, res) => {
   }
 });
 
+// Endpoint untuk menyimpan data pendaftaran PKL
+app.post('/api/pendaftaran', async (req, res) => {
+  const { full_name, email, phone, khs, cv, portfolio, linkedin, github } = req.body;
+
+  // Validasi sederhana
+  if (!full_name || !email || !phone || !khs || !cv || !portfolio || !linkedin || !github) {
+    return res.status(400).json({ message: 'Semua field wajib diisi.' });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO pendaftaran 
+        (full_name, email, phone, khs, cv, portfolio, linkedin, github)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+       RETURNING id`,
+      [full_name, email, phone, khs, cv, portfolio, linkedin, github]
+    );
+
+    res.status(201).json({
+      message: 'Pendaftaran berhasil disimpan.',
+      pendaftaranId: result.rows[0].id
+    });
+  } catch (error) {
+    console.error('Pendaftaran error:', error);
+    res.status(500).json({ message: 'Terjadi kesalahan saat menyimpan pendaftaran.' });
+  }
+});
+
+
 // Jalankan Server
 app.listen(port, () => {
   console.log(`✅ Server berjalan di http://localhost:${port}`);
