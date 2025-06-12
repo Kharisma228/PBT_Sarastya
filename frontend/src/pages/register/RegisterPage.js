@@ -10,10 +10,8 @@ const RegisterPage = () => {
     password: '',
     confirmPassword: '',
     fullName: '',
-    phoneNumber: '',
     institution: '',
     major: '',
-    email: '',
     semester: ''
   });
 
@@ -67,8 +65,6 @@ const RegisterPage = () => {
           <input type="number" name="semester" placeholder="Semester" value={formData.semester} onChange={handleChange} min="1" max="14" />
           <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
           <input type="password" name="confirmPassword" placeholder="Konfirmasi Password" value={formData.confirmPassword} onChange={handleChange} required />
-          <input type="tel" name="phoneNumber" placeholder="Nomor Telepon" value={formData.phoneNumber} onChange={handleChange} />
-          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required/>
 
           <button type="submit" className="submit-btn">Daftar</button>
         </form>
