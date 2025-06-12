@@ -1,0 +1,109 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #eef4ff; /* Biru sangat muda */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.profile-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(10, 46, 99, 0.1); /* Bayangan dengan nuansa biru tua */
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 0.4s ease-in-out;
+  box-sizing: border-box;
+}
+
+.profile-title {
+  font-size: 1.9rem;
+  color: #0a2e63; /* Biru gelap */
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1rem;
+  color: #0a2e63;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid #c3d6f3;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9fbfe;
+  transition: border-color 0.3s ease;
+  color: #1e1e1e;
+}
+
+input:focus {
+  border-color: #2176ff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33, 118, 255, 0.2);
+}
+
+input:disabled {
+  background-color: #e7effb;
+  color: #6b6b6b;
+}
+
+.profile-actions {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.save-btn,
+.edit-btn {
+  background-color: #2176ff;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.save-btn:hover,
+.edit-btn:hover {
+  background-color: #165dd4;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 24px;
+  }
+
+  .profile-title {
+    font-size: 1.6rem;
+  }
+
+  input {
+    font-size: 0.95rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
