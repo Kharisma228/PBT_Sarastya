@@ -73,6 +73,50 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// 3. Get Profil
+app.get('/api/profile/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      'SELECT id, username, full_name, institution, major, semester FROM users WHERE id = $1',
+      [id]
+    );
+
+    const user = result.rows[0];
+    if (!user) return res.status(404).json({ message: 'User tidak ditemukan.' });
+
+    res.json(user);
+  } catch (error) {
+    console.error('Get profile error:', error);
+    res.status(500).json({ message: 'Terjadi kesalahan pada server.' });
+  }
+});
+
+// 4. Update Profil
+app.put('/api/profile/:id', async (req, res) => {
+  const { id } = req.params;
+  const { fullName, institution, major, semester } = req.body;
+
+  try {
+    const updatedUser = await pool.query(
+      `UPDATE users 
+       SET full_name = $1, institution = $2, major = $3, semester = $4 
+       WHERE id = $5 
+       RETURNING id, username, full_name`,
+      [fullName, institution, major, semester, id]
+    );
+
+    if (updatedUser.rowCount === 0) {
+      return res.status(404).json({ message: 'User tidak ditemukan.' });
+    }
+
+    res.json({ message: 'Profil berhasil diperbarui.', user: updatedUser.rows[0] });
+  } catch (error) {
+    console.error('Update profile error:', error);
+    res.status(500).json({ message: 'Terjadi kesalahan pada server.' });
+  }
+});
+
 // Jalankan Server
 app.listen(port, () => {
   console.log(`✅ Server berjalan di http://localhost:${port}`);
