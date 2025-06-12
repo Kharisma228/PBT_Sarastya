@@ -9,7 +9,7 @@ const DashboardPage = () => {
       <main className="dashboard-main">
         <div className="welcome-card">
           <h1>Selamat Datang di Portal PKL/Prakerin</h1>
-          <h1>Sarastya Agility Innovations 👋</h1>
+          <h1>Sarastya Internship Program 👋</h1>
           <p>Kelola pendaftaran, lihat lowongan magang, dan pantau proses magangmu di satu tempat.</p>
         </div>
 
